@@ -33,7 +33,7 @@
   max-height: 50%;
   height: 100%;
 
-  background-color: rgba(24, 24, 24, 0.33);
+  background-color: rgba(24, 24, 24, 0.67);
   color: white;
 
   border-radius: 0.5rem;
