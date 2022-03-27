@@ -7,8 +7,6 @@
 </template>
 
 <style>
-@import "@/assets/base.css";
-
 #app {
   background-color: #77f6fd;
 
