@@ -26,18 +26,17 @@
 .wrapper {
   display: flex;
   justify-content: center;
+  align-items: center;
 
   max-width: 50%;
   width: 100%;
   max-height: 50%;
+  height: 100%;
 
   background-color: rgba(24, 24, 24, 0.33);
   color: white;
 
-  padding: 8rem 4rem;
   border-radius: 0.5rem;
-
-  /* filter: opacity(0.5); */
 }
 
 .wrapper h1 {
