@@ -1,0 +1,6 @@
+@keyframes rotateHue {
+  100% {
+    -webkit-filter: hue-rotate(360deg);
+    filter: hue-rotate(360deg);
+  }
+}
