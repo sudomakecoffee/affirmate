@@ -1,29 +1,70 @@
 <template>
-  <div class="container">
-    <div class="spinner" />
+  <div class="wrapper" v-if="props.loading">
+    <div
+      class="circle"
+      v-for="index in props.count"
+      :style="`--index: ${index}`"
+      :key="index"
+    ></div>
   </div>
+  <!-- <div class="text">Loading...</div> -->
 </template>
 
+<script setup lang="ts">
+import { computed } from "vue";
+
+const props = defineProps({
+  loading: { type: Boolean, default: true },
+  color: { type: String, default: "#000000" },
+  size: { type: Number, default: 60 },
+  sizeUnit: { type: String, default: `px` },
+  count: { type: Number, default: 2 },
+});
+
+const computedSize = computed(() => {
+  return `${props.size}${props.sizeUnit}`;
+});
+const computedColor = computed(() => {
+  return props.color;
+});
+</script>
+
 <style scoped>
-.container {
-  box-sizing: initial;
-  display: inline-block;
-  text-align: center;
-  border-radius: 50%;
-  overflow: hidden;
+.wrapper {
+  position: relative;
+  width: v-bind(computedSize);
+  height: v-bind(computedSize);
 }
-.spinner {
-  box-sizing: initial;
-  border: 2px solid #a1a1a1;
-  border-right-color: transparent;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  animation: spin 0.9s linear infinite;
+
+.circle {
+  position: absolute;
+  width: v-bind(computedSize);
+  height: v-bind(computedSize);
+  background-color: v-bind(computedColor);
+  border-radius: 100%;
+
+  opacity: 0.6;
+  inset: 0;
+  animation-fill-mode: both;
+  animation-name: bounce;
+  animation-duration: 2.1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-delay: calc(1s * var(--index));
 }
-@keyframes spin {
+
+.text {
+  padding-top: 1rem;
+  color: #181818;
+}
+
+@keyframes bounce {
+  0%,
   100% {
-    transform: rotate(360deg);
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
   }
 }
 </style>
