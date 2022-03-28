@@ -1,9 +1,9 @@
 <template>
   <Suspense>
-    <AffirmationComponent />
     <template #fallback>
       <LoadingSpinner />
     </template>
+    <AffirmationComponent />
   </Suspense>
 </template>
 
