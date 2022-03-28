@@ -1,7 +1,7 @@
 <template>
   <Suspense>
     <template #fallback>
-      <LoadingSpinner />
+      <LoadingSpinner color="#00C9AC" />
     </template>
     <AffirmationComponent />
   </Suspense>
