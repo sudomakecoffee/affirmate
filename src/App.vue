@@ -1,10 +1,16 @@
-<script setup lang="ts"></script>
-
 <template>
-  <div class="wrapper">
-    <h1>Hello</h1>
-  </div>
+  <Suspense>
+    <AffirmationComponent />
+    <template #fallback>
+      <LoadingSpinner />
+    </template>
+  </Suspense>
 </template>
+
+<script setup lang="ts">
+import AffirmationComponent from "@/components/AffirmationComponent.vue";
+import LoadingSpinner from "@/components/LoadingSpinner.vue";
+</script>
 
 <style>
 #app {
@@ -19,26 +25,6 @@
   align-items: center;
 
   font-weight: normal;
-}
-
-.wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  max-width: 50%;
-  width: 100%;
-  max-height: 50%;
-  height: 100%;
-
-  background-color: rgba(24, 24, 24, 0.67);
-  color: white;
-
-  border-radius: 0.5rem;
-}
-
-.wrapper h1 {
-  display: inline;
 }
 
 @media (min-width: 1024px) {
