@@ -13,6 +13,8 @@ import LoadingSpinner from "@/components/LoadingSpinner.vue";
 </script>
 
 <style>
+@import "@/assets/base.css";
+
 #app {
   background-color: #77f6fd;
 
