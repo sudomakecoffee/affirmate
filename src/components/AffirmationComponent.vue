@@ -11,7 +11,7 @@ const loading = ref(true);
 console.log("loading...");
 await delay();
 
-function delay(ms = 5000) {
+function delay(ms = 500) {
   return new Promise((resolve) =>
     setTimeout(() => {
       loading.value = false;
