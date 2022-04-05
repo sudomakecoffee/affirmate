@@ -15,9 +15,9 @@ import { usePhraseStore } from "./stores/phraseStore";
 
 export default defineComponent({
   setup() {
-     const phraseStore = usePhraseStore();
+    const phraseStore = usePhraseStore();
     return {
-      phraseStore
+      phraseStore,
     };
   },
   components: {
