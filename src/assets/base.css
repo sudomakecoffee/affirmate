@@ -19,20 +19,18 @@
   box-sizing: border-box;
   margin: 0;
   position: relative;
-  font-weight: normal;
 }
 
 body {
   color: var(--color-text);
   background-color: var(--color-background);
 
-  font-family: Roboto, Oxygen, Ubuntu, "Droid Sans", sans-serif;
-  font-size: 15px;
+  font-family: "Raleway", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 
-  animation: rotateHue 25s linear infinite;
+  animation: rotateHue 30s linear infinite;
 }
 
 @keyframes rotateHue {
