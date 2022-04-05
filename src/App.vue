@@ -1,15 +1,29 @@
 <template>
   <Suspense>
     <template #fallback>
-      <LoadingSpinner color="#00C9AC" />
+      <!-- <LoadingSpinner color="#00C9AC" /> -->
     </template>
     <AffirmationComponent />
   </Suspense>
 </template>
 
-<script setup lang="ts">
-import AffirmationComponent from "@/components/AffirmationComponent.vue";
-import LoadingSpinner from "@/components/LoadingSpinner.vue";
+<script lang="ts">
+import { defineComponent } from "vue";
+import AffirmationComponent from "./components/AffirmationComponent.vue";
+// import LoadingSpinner from "./components/LoadingSpinner.vue";
+import { usePhraseStore } from "./stores/phraseStore";
+
+export default defineComponent({
+  setup() {
+     const phraseStore = usePhraseStore();
+    return {
+      phraseStore
+    };
+  },
+  components: {
+    AffirmationComponent,
+  },
+});
 </script>
 
 <style>
