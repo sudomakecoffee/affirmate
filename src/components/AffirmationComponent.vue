@@ -13,9 +13,6 @@ export default defineComponent({
   setup() {
     const affirmationComponent = ref();
     const phrases = usePhraseStore();
-    var phrase = phrases.getRandom("a");
-    var phrase2 = phrases.getRandom("a");
-    console.log(phrase2, phrase);
     // let name: string = "test2";
     let name = ref("test2");
 
@@ -24,7 +21,7 @@ export default defineComponent({
     function delay(ms = 500) {
       // return new Promise((resolve) => {
           // loading.value = false;
-          name.value = phrases.getRandom("a")
+          name.value = phrases.getRandom()
           // resolve(null);
           console.log( name.value);
       // });

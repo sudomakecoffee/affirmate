@@ -26,11 +26,11 @@ export const usePhraseStore = defineStore("phrases", {
       "It's okay to not know the answers.",
       "Do something today that your future self will thank you for",],
     }),
-    getters: {
-      getRandom:  (state) => {
-        const index: number = Math.floor(Math.random() * state.phrases.length);
+    actions: {
+      getRandom(): string {
+        const index: number = Math.floor(Math.random() * this.phrases.length);
         console.log("getRandom");
-        return (phrase: string) => state.phrases[index];
+        return this.phrases[index];
       }
     }
 });
