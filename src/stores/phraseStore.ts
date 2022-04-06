@@ -29,7 +29,6 @@ export const usePhraseStore = defineStore("phrases", {
     actions: {
       getRandom(): string {
         const index: number = Math.floor(Math.random() * this.phrases.length);
-        console.log("getRandom");
         return this.phrases[index];
       }
     }

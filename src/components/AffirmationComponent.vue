@@ -1,11 +1,13 @@
 <template>
   <div class="wrapper fadeIn" v-if="!loading">
-    <h1>{{name}}</h1>
+    <h1>{{affirmation}}</h1>
+  </div>
+  <div class="wrapper fadeOut" v-if="loading">
+    <h1>{{affirmation}}</h1>
   </div>
 </template>
 
 <script lang="ts">
-// import { type GameBusData, alertBusKey } from "@/use/useGameBus";
 import { defineComponent, ref, onMounted } from "vue";
 import { usePhraseStore } from "./../stores/phraseStore";
 
@@ -13,53 +15,30 @@ export default defineComponent({
   setup() {
     const affirmationComponent = ref();
     const phrases = usePhraseStore();
-    // let name: string = "test2";
-    let name = ref("test2");
-
+    let affirmation = ref("Hello Friend");
     const loading = ref(true);
 
-    function delay(ms = 500) {
-      // return new Promise((resolve) => {
-          // loading.value = false;
-          name.value = phrases.getRandom()
-          // resolve(null);
-          console.log( name.value);
-      // });
-    }
-
     onMounted(() => {
-      console.log("loading...");
       loading.value = false;
-      // while(true) {
         setInterval(() => {
           {       
-            delay();
+            loading.value = true;
+            setTimeout(() => {
+              affirmation.value = phrases.getRandom();
+              loading.value = false;
+            }, 2000);
           }
-          }, 5000)
+          }, 20000)
     });
 
     return {
       affirmationComponent,
-      name,
-      delay,
+      affirmation,
       loading
     };
   }
 });
 
-
-
-// function delay(ms = 500) {
-//   return new Promise((resolve) =>
-//     setTimeout(() => {
-//       loading.value = false;
-//       const phrases = usePhraseStore();
-//       this.name = phrases.getRandom
-//       resolve(null);
-//       console.log("loaded");
-//     }, ms)
-//   );
-// }
 </script>
 
 <style scoped>
@@ -82,10 +61,24 @@ export default defineComponent({
 
 .wrapper h1 {
   display: inline;
+  padding: 15px 15px 15px 15px;
 }
 
 .wrapper.fadeIn {
   animation: fadeIn 2s ease-in forwards;
+}
+
+.wrapper.fadeOut {
+  animation: fadeOut 2s ease-in forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes fadeIn {
