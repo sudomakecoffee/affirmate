@@ -25,7 +25,7 @@ export default defineComponent({
 @import "@/assets/animations.css";
 
 #app {
-  background-color: hsl(183, 97%, 73%);
+  background-color: hsl(183, 67%, 58%);
 
   display: flex;
   flex-direction: column;
@@ -37,5 +37,11 @@ export default defineComponent({
   align-items: center;
 
   font-weight: normal;
+}
+
+@media (prefers-color-scheme: dark) {
+  #app {
+    background-color: hsl(183, 67%, 43%);
+  }
 }
 </style>
