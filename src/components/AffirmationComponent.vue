@@ -46,12 +46,10 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
 
-  max-width: 50%;
-  width: 100%;
-  max-height: 50%;
-  height: 100%;
+  width: min(90%, 60rem);
+  height: min(90%, 40rem);
 
-  padding: 3rem 6rem;
+  padding: 1rem 2rem;
 
   background-color: rgba(24, 24, 24, 0.67);
   color: white;
@@ -72,21 +70,9 @@ export default defineComponent({
   animation: fadeOut 2s ease-in forwards;
 }
 
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
+@media only screen and (min-width: 1024px) {
+  .wrapper {
+    padding: 3rem 6rem;
   }
 }
 </style>
