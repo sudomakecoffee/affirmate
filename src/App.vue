@@ -28,25 +28,20 @@ export default defineComponent({
 
 <style>
 @import "@/assets/base.css";
+@import "@/assets/animations.css";
 
 #app {
-  background-color: #77f6fd;
+  background-color: hsl(183, 97%, 73%);
 
-  width: 100vw;
-  height: 100vh;
   display: flex;
   flex-direction: column;
+
+  width: 95%;
+  height: 95%;
 
   justify-content: center;
   align-items: center;
 
   font-weight: normal;
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
 }
 </style>

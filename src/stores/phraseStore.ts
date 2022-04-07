@@ -1,8 +1,9 @@
 import { acceptHMRUpdate, defineStore } from "pinia";
 
 export const usePhraseStore = defineStore("phrases", {
-    state: () => ({
-      phrases: ["Just because it took you longer than others doesn't mean you failed",
+  state: () => ({
+    phrases: [
+      "Just because it took you longer than others doesn't mean you failed",
       "Don't sacrifice yourself in pursuit of pleasing everyone else",
       "You don't have to feel hopeful about the future, it's enough to just be curious about what's coming",
       "Be proud of how far you've come, even if you still have a long way to go",
@@ -24,14 +25,15 @@ export const usePhraseStore = defineStore("phrases", {
       "No one is in charge of your happiness except you.",
       "Don't compare your experience to others and don't judge their experience, you have no idea what their journey is all about.",
       "It's okay to not know the answers.",
-      "Do something today that your future self will thank you for",],
-    }),
-    actions: {
-      getRandom(): string {
-        const index: number = Math.floor(Math.random() * this.phrases.length);
-        return this.phrases[index];
-      }
-    }
+      "Do something today that your future self will thank you for",
+    ],
+  }),
+  actions: {
+    getRandom(): string {
+      const index: number = Math.floor(Math.random() * this.phrases.length);
+      return this.phrases[index];
+    },
+  },
 });
 
 if (import.meta.hot) {

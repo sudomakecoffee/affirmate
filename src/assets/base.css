@@ -25,17 +25,22 @@ body {
   color: var(--color-text);
   background-color: var(--color-background);
 
+  margin: 0;
+  padding: 0;
+
+  width: 100vw;
+  height: 100vh;
+
   font-family: "Raleway", sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.125rem;
   font-weight: 600;
   text-rendering: optimizeLegibility;
 
   animation: rotateHue 30s linear infinite;
 }
 
-@keyframes rotateHue {
-  100% {
-    -webkit-filter: hue-rotate(360deg);
-    filter: hue-rotate(360deg);
+@media only screen and (min-width: 1024px) {
+  body {
+    font-size: 1.5rem;
   }
 }
