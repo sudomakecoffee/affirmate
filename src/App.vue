@@ -35,8 +35,6 @@ export default defineComponent({
 
   justify-content: center;
   align-items: center;
-
-  font-weight: normal;
 }
 
 @media (prefers-color-scheme: dark) {
