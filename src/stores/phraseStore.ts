@@ -24,9 +24,11 @@ export const usePhraseStore = defineStore("phrases", {
       "What other people think of you is none of your business",
       "Time heals almost everything.  Give it time",
       "No one is in charge of your happiness except you.",
-      "Don't compare your experience to others and don't judge their experience. You have no idea what their journey is all about.",
+      "Don't compare your experience to others and don't judge their experience. You have no idea what their journey is all about, and it doesn't invalidate yours.",
       "It's okay to not know the answers.",
       "Do something today that your future self will thank you for",
+      "You are enough",
+      "Failing is always an option. It is okay to fail. Learn from it.",
     ],
   }),
   getters: {
