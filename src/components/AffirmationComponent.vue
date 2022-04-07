@@ -1,9 +1,9 @@
 <template>
   <div class="wrapper fadeIn" v-if="!loading">
-    <h1>{{affirmation}}</h1>
+    <h1>{{ affirmation }}</h1>
   </div>
   <div class="wrapper fadeOut" v-if="loading">
-    <h1>{{affirmation}}</h1>
+    <h1>{{ affirmation }}</h1>
   </div>
 </template>
 
@@ -20,25 +20,24 @@ export default defineComponent({
 
     onMounted(() => {
       loading.value = false;
-        setInterval(() => {
-          {       
-            loading.value = true;
-            setTimeout(() => {
-              affirmation.value = phrases.getRandom();
-              loading.value = false;
-            }, 2000);
-          }
-          }, 20000)
+      setInterval(() => {
+        {
+          loading.value = true;
+          setTimeout(() => {
+            affirmation.value = phrases.getRandom();
+            loading.value = false;
+          }, 2000);
+        }
+      }, 20000);
     });
 
     return {
       affirmationComponent,
       affirmation,
-      loading
+      loading,
     };
-  }
+  },
 });
-
 </script>
 
 <style scoped>
