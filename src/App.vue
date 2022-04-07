@@ -1,87 +1,47 @@
-<script setup lang="ts">
-import HelloWorld from "./components/HelloWorld.vue";
-import TheWelcome from "./components/TheWelcome.vue";
-</script>
-
 <template>
-  <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="./assets/logo.svg"
-      width="125"
-      height="125"
-    />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <Suspense>
+    <template #fallback>
+      <!-- <LoadingSpinner color="#00C9AC" /> -->
+    </template>
+    <AffirmationComponent />
+  </Suspense>
 </template>
 
+<script lang="ts">
+import { defineComponent } from "vue";
+import AffirmationComponent from "./components/AffirmationComponent.vue";
+// import LoadingSpinner from "./components/LoadingSpinner.vue";
+import { usePhraseStore } from "./stores/phraseStore";
+
+export default defineComponent({
+  setup() {
+    const phraseStore = usePhraseStore();
+    return {
+      phraseStore,
+    };
+  },
+  components: {
+    AffirmationComponent,
+  },
+});
+</script>
+
 <style>
-@import "./assets/base.css";
+@import "@/assets/base.css";
+@import "@/assets/animations.css";
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  background-color: hsl(183, 97%, 73%);
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+
+  justify-content: center;
+  align-items: center;
 
   font-weight: normal;
-}
-
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
-
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
 }
 </style>
