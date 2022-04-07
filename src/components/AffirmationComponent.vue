@@ -67,6 +67,7 @@ export default defineComponent({
 
 .wrapper h1 {
   display: inline;
+  font-weight: 400;
 }
 
 .wrapper.fadeIn {
