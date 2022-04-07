@@ -1,5 +1,6 @@
 import { acceptHMRUpdate, defineStore } from "pinia";
 
+let randomized: number[];
 export const usePhraseStore = defineStore("phrases", {
   state: () => ({
     phrases: [
@@ -8,7 +9,7 @@ export const usePhraseStore = defineStore("phrases", {
       "You don't have to feel hopeful about the future, it's enough to just be curious about what's coming",
       "Be proud of how far you've come, even if you still have a long way to go",
       "Success by your timeline is still success",
-      "It gets easier every day, every day it gets a little easier.  But you have to do it every day, that's the hard part.",
+      "Every day it gets a little easier.  But you have to do it every day, that's the hard part.",
       "Taking care of your well-being isn't weakness, it's necessary",
       "Pretending to not be afraid is as good as actually not being afraid",
       "Motivation builds habits, habits build routines.  Don't let lack of motivation stop you from trying",
@@ -23,11 +24,25 @@ export const usePhraseStore = defineStore("phrases", {
       "What other people think of you is none of your business",
       "Time heals almost everything.  Give it time",
       "No one is in charge of your happiness except you.",
-      "Don't compare your experience to others and don't judge their experience, you have no idea what their journey is all about.",
+      "Don't compare your experience to others and don't judge their experience. You have no idea what their journey is all about.",
       "It's okay to not know the answers.",
       "Do something today that your future self will thank you for",
     ],
   }),
+  getters: {
+    get: function (state) {
+      return function (which: number) {
+        if (!randomized) {
+          randomized = [...state.phrases].map((_, index) => {
+            return index;
+          });
+          randomized.sort(() => Math.random() - 0.5); // takes value [0, 1] and converts to [-0.5, 0.5]
+        }
+        const index = randomized[which % randomized.length];
+        return state.phrases[index];
+      };
+    },
+  },
   actions: {
     getRandom(): string {
       const index: number = Math.floor(Math.random() * this.phrases.length);

@@ -13,10 +13,17 @@ import { usePhraseStore } from "@/stores/phraseStore";
 
 export default defineComponent({
   setup() {
-    const affirmationComponent = ref();
     const phrases = usePhraseStore();
     const affirmation = ref("Hello Friend");
     const loading = ref(true);
+    let currentIndex = 0;
+
+    const resetCurrentIndex = () => {
+      currentIndex =
+        currentIndex >= phrases.phrases.length
+          ? currentIndex % phrases.phrases.length
+          : currentIndex;
+    };
 
     onMounted(() => {
       loading.value = false;
@@ -24,7 +31,8 @@ export default defineComponent({
         {
           loading.value = true;
           setTimeout(() => {
-            affirmation.value = phrases.getRandom();
+            resetCurrentIndex();
+            affirmation.value = phrases.get(currentIndex++);
             loading.value = false;
           }, 2000);
         }
@@ -32,7 +40,6 @@ export default defineComponent({
     });
 
     return {
-      affirmationComponent,
       affirmation,
       loading,
     };
