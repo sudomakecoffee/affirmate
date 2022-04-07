@@ -9,13 +9,13 @@
 
 <script lang="ts">
 import { defineComponent, ref, onMounted } from "vue";
-import { usePhraseStore } from "./../stores/phraseStore";
+import { usePhraseStore } from "@/stores/phraseStore";
 
 export default defineComponent({
   setup() {
     const affirmationComponent = ref();
     const phrases = usePhraseStore();
-    let affirmation = ref("Hello Friend");
+    const affirmation = ref("Hello Friend");
     const loading = ref(true);
 
     onMounted(() => {
@@ -51,16 +51,17 @@ export default defineComponent({
   max-height: 50%;
   height: 100%;
 
-  opacity: 0;
+  padding: 3rem 6rem;
+
   background-color: rgba(24, 24, 24, 0.67);
   color: white;
+  opacity: 0;
 
   border-radius: 0.5rem;
 }
 
 .wrapper h1 {
   display: inline;
-  padding: 15px 15px 15px 15px;
 }
 
 .wrapper.fadeIn {
