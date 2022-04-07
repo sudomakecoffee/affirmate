@@ -37,7 +37,6 @@ export const usePhraseStore = defineStore("phrases", {
             return index;
           });
           randomized.sort(() => Math.random() - 0.5); // takes value [0, 1] and converts to [-0.5, 0.5]
-          console.log(randomized);
         }
         const index = randomized[which % randomized.length];
         return state.phrases[index];
