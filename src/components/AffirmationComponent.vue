@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, onMounted } from "vue";
-import { usePhraseStore } from "@/stores/phraseStore";
+import { usePhraseStore } from "./../stores/phraseStore";
 
 export default defineComponent({
   setup() {
@@ -25,8 +25,30 @@ export default defineComponent({
           : currentIndex;
     };
 
+    function isScreenLockSupported() {
+      return "wakeLock" in navigator;
+    }
+
+    async function getScreenLock() {
+      if (isScreenLockSupported()) {
+        let screenLock;
+        try {
+          screenLock = await navigator.wakeLock.request("screen");
+          document.addEventListener('visibilitychange', async () => {
+        if (screenLock !== null && document.visibilityState === 'visible') {
+          screenLock = await navigator.wakeLock.request('screen');
+        }
+      });
+        } catch (err) {
+          console.log(err.name, err.message);
+        }
+        return screenLock;
+      }
+    }
+
     onMounted(() => {
       loading.value = false;
+      getScreenLock();
       setInterval(() => {
         {
           loading.value = true;
