@@ -53,10 +53,11 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
 
-  width: min(90%, 60rem);
-  height: min(90%, 40rem);
+  padding: 2rem 4rem;
+  max-width: 50%;
+  max-height: 50%;
 
-  padding: 1rem 2rem;
+  text-align: center;
 
   background-color: rgba(24, 24, 24, 0.67);
   color: white;
@@ -80,7 +81,7 @@ export default defineComponent({
 
 @media only screen and (min-width: 1024px) {
   .wrapper {
-    padding: 3rem 6rem;
+    padding: 4rem 6rem;
   }
 }
 </style>
